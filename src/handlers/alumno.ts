@@ -1,14 +1,18 @@
 
-import alumnoController from '../controller/alumno'
+import { Request, Response, NextFunction } from 'express';
+import alumnoController from '../controller/alumno';
 
+
+const AlumnoController = new alumnoController();
 
 class alumnoHandler {
 
     
-    async getAlumnoStatus() {
+    async getAlumno(request: Request, response: Response, next: NextFunction) {
 
         try{
-            const alumnos =await a
+            const alumno =await AlumnoController.getAllAlumnoStatus();
+            response.json(alumno)
         }catch(error){
             next(error)
         }
